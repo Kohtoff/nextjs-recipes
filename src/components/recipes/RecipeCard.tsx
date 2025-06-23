@@ -9,7 +9,7 @@ type Props = {
 const RecipeCard = ({ recipe }: Props) => {
   return (
     <article className="group relative">
-      <Link href={`/recipes/${recipe.id}`}>
+      <Link href={`/recipes/${recipe.id}`} prefetch>
         <Image
           width={280}
           height={340}

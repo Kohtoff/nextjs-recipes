@@ -1,11 +1,11 @@
 import { Recipe } from "@/data/models/recipes.interface";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import React, { Suspense } from "react";
+import React from "react";
 
 const RecipePage = async ({ params }: { params: { id: string } }) => {
   const recipe: Recipe = await fetch(
-    `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.API_KEY}`
+    `${process.env.API_BASE_URL}/recipes/${params.id}/information?apiKey=${process.env.API_KEY}`
   )
     .then((res) => res.json())
     .catch(console.log);
