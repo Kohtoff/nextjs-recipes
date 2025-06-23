@@ -3,3 +3,10 @@ export interface EntityRecord {
     name: string
 }
 
+export interface Paginated<T> {
+    results: Array<T>;
+    offset: number;
+    number: number;
+    totalResults: number;
+}
+
