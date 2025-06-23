@@ -4,6 +4,13 @@ export interface RecipeListItem {
   imageType: "jpg" | "jpeg" | "png";
   title: string;
 }
+
+export interface RecipeListParams {
+  keyword?: string;
+  cuisine?: string;
+  cookingDuration?: string;
+  page?: string;
+}
 export interface IngredientMeasures {
   amount: number;
   unitLong: string;
