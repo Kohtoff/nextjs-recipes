@@ -3,14 +3,15 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 
-const RecipePage = async ({ params }: { params: { id: string } }) => {
+const RecipePage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
   const recipe: Recipe = await fetch(
-    `${process.env.API_BASE_URL}/recipes/${params.id}/information?apiKey=${process.env.API_KEY}`
+    `${process.env.API_BASE_URL}/recipes/${id}/information?apiKey=${process.env.API_KEY}`
   )
     .then((res) => res.json())
     .catch(() => {
       // redirect user to error.tsx
-      throw new Error(`Error fetching recipe ${params.id}`)
+      throw new Error(`Error fetching recipe ${id}`)
   })
 
   if (!recipe) notFound();

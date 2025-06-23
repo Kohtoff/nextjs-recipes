@@ -65,7 +65,7 @@ export interface Recipe {
   healthScore: number;
   spoonacularScore: number;
   pricePerServing: number;
-  analyzedInstructions: any[]; // уточнить структуру если нужно
+  analyzedInstructions: unknown[];
   cheap: boolean;
   creditsText: string;
   cuisines: string[];

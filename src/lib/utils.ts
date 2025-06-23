@@ -33,7 +33,7 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     ];
   };
 
-  export function getTotalPages(pagination: Pick<Paginated<any>, 'totalResults' | 'number'>): number {
+  export function getTotalPages(pagination: Pick<Paginated<unknown>, 'totalResults' | 'number'>): number {
     if (!pagination.number || pagination.number <= 0) return 0;
     return Math.ceil(pagination.totalResults / pagination.number);
   }

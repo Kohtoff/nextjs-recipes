@@ -4,10 +4,11 @@ import { RecipeListParams } from "@/data/models/recipes.interface";
 import { Suspense } from "react";
 
 interface Props {
-  searchParams: RecipeListParams;
+  searchParams: Promise<RecipeListParams>;
 }
 
 const RecipesPage = async ({ searchParams }: Props) => {
+  const listSearchParams = await searchParams;
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -18,7 +19,7 @@ const RecipesPage = async ({ searchParams }: Props) => {
             </div>
           }
         >
-          <RecipeList {...searchParams} />
+          <RecipeList {...listSearchParams} />
         </Suspense>
       </div>
     </div>
