@@ -1,8 +1,8 @@
-import { Recipe } from "@/data/models/recipes.interface";
+import { RecipeListItem } from "@/data/models/recipes.interface";
 import RecipeCard from "./RecipeCard";
 
 type Props = {
-  recipes?: Recipe[];
+  recipes?: RecipeListItem[];
 };
 
 const RecipeGrid = ({ recipes }: Props) => {

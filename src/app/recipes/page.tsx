@@ -1,5 +1,6 @@
 import RecipeGrid from "@/components/recipes/RecipeGrid";
 import { Paginated } from "@/data/models/common.interface";
+import { RecipeListItem } from "@/data/models/recipes.interface";
 
 interface SearchParams {
   keyword?: string;
@@ -20,7 +21,7 @@ const RecipesPage = async ({ searchParams }: Props) => {
   if (cookingDuration) params.maxReadyTime = cookingDuration;
   if (process.env.API_KEY) params.apiKey = process.env.API_KEY;
 
-  const recipes: Paginated<any> = await fetch(
+  const recipes: Paginated<RecipeListItem> = await fetch(
     `https://api.spoonacular.com/recipes/complexSearch?` +
       new URLSearchParams(params),
     { next: { revalidate: 60 } }
@@ -28,9 +29,13 @@ const RecipesPage = async ({ searchParams }: Props) => {
     .then((res) => res.json())
     .catch(console.log);
 
-  return <div>
-    <RecipeGrid recipes={recipes.results} />
-  </div>;
+  return (
+    <div className="bg-white">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <RecipeGrid recipes={recipes.results} />
+      </div>
+    </div>
+  );
 };
 
 export default RecipesPage;
